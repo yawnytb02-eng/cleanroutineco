@@ -1,0 +1,433 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap');
+
+  .cr-root {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--color-text-primary);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .cr-hero {
+    background: #F5EFE6;
+    border-radius: var(--border-radius-lg);
+    padding: 3.5rem 2.5rem 3rem;
+    text-align: center;
+    margin-bottom: 1px;
+  }
+
+  .cr-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #9E8A78;
+    margin-bottom: 1.2rem;
+  }
+
+  .cr-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: #3A2E24;
+    margin: 0 0 1rem;
+  }
+
+  .cr-hero-sub {
+    font-size: 15px;
+    color: #7A6A5C;
+    max-width: 380px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+
+  .cr-pill-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cr-pill {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 0.5px solid #C4B49E;
+    color: #7A6A5C;
+  }
+
+  .cr-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-bottom: 1px;
+  }
+
+  .cr-card {
+    padding: 2.5rem 2rem;
+    border-radius: 0;
+  }
+
+  .cr-card-girl {
+    background: #FAF5EE;
+  }
+
+  .cr-card-boy {
+    background: #F0EAE1;
+  }
+
+  .cr-card-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .cr-card-girl .cr-card-label { color: #B59A80; }
+  .cr-card-boy .cr-card-label { color: #8C7060; }
+
+  .cr-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 0 0 0.8rem;
+  }
+
+  .cr-card-girl .cr-card-title { color: #3A2E24; }
+  .cr-card-boy .cr-card-title { color: #2C2218; }
+
+  .cr-card-desc {
+    font-size: 13.5px;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .cr-card-girl .cr-card-desc { color: #7A6A5C; }
+  .cr-card-boy .cr-card-desc { color: #6B5A4E; }
+
+  .cr-inside-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.8rem;
+  }
+
+  .cr-inside-list li {
+    font-size: 12.5px;
+    padding: 6px 0;
+    border-bottom: 0.5px solid #D6C9B8;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cr-card-girl .cr-inside-list li { color: #7A6A5C; border-color: #D6C9B8; }
+  .cr-card-boy .cr-inside-list li { color: #6B5A4E; border-color: #C8B8A8; }
+
+  .cr-li-tick {
+    font-size: 11px;
+    color: #B59A80;
+  }
+
+  .cr-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .cr-card-girl .cr-price { color: #3A2E24; }
+  .cr-card-boy .cr-price { color: #2C2218; }
+
+  .cr-price span {
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: #9E8A78;
+    margin-left: 6px;
+  }
+
+  .cr-btn {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    text-align: center;
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    cursor: pointer;
+    border: 0.5px solid;
+    transition: opacity 0.2s;
+  }
+
+  .cr-btn-girl {
+    background: #3A2E24;
+    color: #FAF5EE;
+    border-color: #3A2E24;
+  }
+
+  .cr-btn-boy {
+    background: #2C2218;
+    color: #F0EAE1;
+    border-color: #2C2218;
+  }
+
+  .cr-btn:hover { opacity: 0.82; }
+
+  .cr-inside-strip {
+    background: #EDE5DA;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem 2rem;
+    margin-bottom: 1px;
+  }
+
+  .cr-inside-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #3A2E24;
+    margin: 0 0 1.5rem;
+    text-align: center;
+  }
+
+  .cr-pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .cr-page-chip {
+    background: #FAF5EE;
+    border: 0.5px solid #C4B49E;
+    border-radius: var(--border-radius-md);
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #7A6A5C;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .cr-page-chip i {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 5px;
+    color: #B59A80;
+  }
+
+  .cr-quote-strip {
+    background: #F5EFE6;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem 2.5rem;
+    margin-bottom: 1px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .cr-quote {
+    border-left: 1.5px solid #C4B49E;
+    padding-left: 1.2rem;
+  }
+
+  .cr-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    color: #3A2E24;
+    line-height: 1.55;
+    margin: 0 0 0.6rem;
+  }
+
+  .cr-quote-attr {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #9E8A78;
+    text-transform: uppercase;
+  }
+
+  .cr-bundle-strip {
+    background: #3A2E24;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem 2.5rem;
+    margin-bottom: 1px;
+    text-align: center;
+  }
+
+  .cr-bundle-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #B59A80;
+    margin-bottom: 0.8rem;
+  }
+
+  .cr-bundle-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: #FAF5EE;
+    margin: 0 0 0.6rem;
+  }
+
+  .cr-bundle-sub {
+    font-size: 13.5px;
+    color: #C4B49E;
+    margin-bottom: 1.8rem;
+    line-height: 1.65;
+  }
+
+  .cr-bundle-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: #FAF5EE;
+    margin-bottom: 1.4rem;
+  }
+
+  .cr-bundle-price span {
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: #9E8A78;
+    margin-left: 8px;
+    text-decoration: line-through;
+  }
+
+  .cr-btn-bundle {
+    display: inline-block;
+    padding: 13px 36px;
+    background: #F5EFE6;
+    color: #3A2E24;
+    border-radius: var(--border-radius-md);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cr-btn-bundle:hover { opacity: 0.85; }
+
+  .cr-footer {
+    background: #F0EAE1;
+    border-radius: var(--border-radius-lg);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cr-footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #3A2E24;
+    letter-spacing: 0.05em;
+  }
+
+  .cr-footer-note {
+    font-size: 12px;
+    color: #9E8A78;
+  }
+
+  @media (max-width: 520px) {
+    .cr-split, .cr-quote-strip { grid-template-columns: 1fr; }
+    .cr-hero { padding: 2.5rem 1.5rem; }
+    .cr-hero-title { font-size: 32px; }
+  }
+</style>
+
+<div class="cr-root" role="main">
+  <h2 class="sr-only">Clean Routine Co — Digital Logbooks for the Clean Girl and Clean Boy</h2>
+
+  <div class="cr-hero">
+    <p class="cr-eyebrow">Clean Routine Co</p>
+    <h1 class="cr-hero-title">Your routine,<br><em>on paper.</em></h1>
+    <p class="cr-hero-sub">Two digital logbooks built for people who take their rituals seriously — without making a big deal of it.</p>
+    <div class="cr-pill-row">
+      <span class="cr-pill">Digital PDF</span>
+      <span class="cr-pill">Print-at-home or annotate</span>
+      <span class="cr-pill">Instant download</span>
+    </div>
+  </div>
+
+  <div class="cr-split">
+    <div class="cr-card cr-card-girl" style="border-radius: 0 0 0 var(--border-radius-lg);">
+      <p class="cr-card-label">For her</p>
+      <h2 class="cr-card-title">Clean Girl<br>Logbook</h2>
+      <p class="cr-card-desc">A place to track what you're using, how you're feeling, and what's actually working. Skincare, movement, food, sleep — laid out without fuss.</p>
+      <ul class="cr-inside-list">
+        <li>Vision Board <span class="cr-li-tick">✓</span></li>
+        <li>Monthly Skincare Tracker <span class="cr-li-tick">✓</span></li>
+        <li>Thoughts on New Products <span class="cr-li-tick">✓</span></li>
+        <li>Food & Fuel / Movement <span class="cr-li-tick">✓</span></li>
+        <li>Mind, Reading, Wind-Down <span class="cr-li-tick">✓</span></li>
+        <li>Daily Journal <span class="cr-li-tick">✓</span></li>
+      </ul>
+      <p class="cr-price">$25 <span>single</span></p>
+      <a href="https://cleanroutineco.gumroad.com/" class="cr-btn cr-btn-girl">Get the logbook</a>
+    </div>
+
+    <div class="cr-card cr-card-boy" style="border-radius: 0 0 var(--border-radius-lg) 0;">
+      <p class="cr-card-label">For him</p>
+      <h2 class="cr-card-title">Clean Boy<br>Logbook</h2>
+      <p class="cr-card-desc">Track your rotation, rate your fragrances, log your training. A grounded system for men who care about the details without needing to explain why.</p>
+      <ul class="cr-inside-list">
+        <li>Vision Board <span class="cr-li-tick">✓</span></li>
+        <li>Fragrance & Grooming Vault <span class="cr-li-tick">✓</span></li>
+        <li>Rate out of 10 / in rotation <span class="cr-li-tick">✓</span></li>
+        <li>Food & Fuel / Movement <span class="cr-li-tick">✓</span></li>
+        <li>Mind, Reading, Wind-Down <span class="cr-li-tick">✓</span></li>
+        <li>Daily Journal <span class="cr-li-tick">✓</span></li>
+      </ul>
+      <p class="cr-price">$25 <span>single</span></p>
+      <a href="https://cleanroutineco.gumroad.com/" class="cr-btn cr-btn-boy">Get the logbook</a>
+    </div>
+  </div>
+
+  <div class="cr-inside-strip">
+    <h2 class="cr-inside-title">What's inside, every day</h2>
+    <div class="cr-pages-grid">
+      <div class="cr-page-chip"><i class="ti ti-sun" aria-hidden="true"></i>Timetable</div>
+      <div class="cr-page-chip"><i class="ti ti-apple" aria-hidden="true"></i>Food & Fuel</div>
+      <div class="cr-page-chip"><i class="ti ti-run" aria-hidden="true"></i>Movement</div>
+      <div class="cr-page-chip"><i class="ti ti-book" aria-hidden="true"></i>Reading</div>
+      <div class="cr-page-chip"><i class="ti ti-brain" aria-hidden="true"></i>Mind & Focus</div>
+      <div class="cr-page-chip"><i class="ti ti-moon" aria-hidden="true"></i>Night Wind-Down</div>
+      <div class="cr-page-chip"><i class="ti ti-pencil" aria-hidden="true"></i>Journal</div>
+      <div class="cr-page-chip"><i class="ti ti-eye" aria-hidden="true"></i>Vision Board</div>
+    </div>
+  </div>
+
+  <div class="cr-quote-strip">
+    <div class="cr-quote">
+      <p class="cr-quote-text">"Skincare felt random until I started writing it down. Now I actually know what works."</p>
+      <p class="cr-quote-attr">Clean Girl user</p>
+    </div>
+    <div class="cr-quote">
+      <p class="cr-quote-text">"The fragrance vault alone. Finally a proper way to track what I've tried."</p>
+      <p class="cr-quote-attr">Clean Boy user</p>
+    </div>
+  </div>
+
+  <div class="cr-bundle-strip">
+    <p class="cr-bundle-eyebrow">Better together</p>
+    <h2 class="cr-bundle-title">The Clean Bundle</h2>
+    <p class="cr-bundle-sub">Both logbooks together. For couples, for gifting,<br>or for anyone who wants both.</p>
+    <p class="cr-bundle-price">$30 <span>$50 if bought separately</span></p>
+    <a href="https://cleanroutineco.gumroad.com/" class="cr-btn-bundle">Get the bundle</a>
+  </div>
+
+  <div class="cr-footer">
+    <span class="cr-footer-brand">Clean Routine Co</span>
+    <span class="cr-footer-note">Digital download · PDF · Available on Gumroad</span>
+  </div>
+</div>
