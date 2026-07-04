@@ -29,6 +29,35 @@
     --hustle-muted: #8A9BA8;
     --hustle-gold: #D4AF37;
     --hustle-border: #252525;
+
+    --rg-bg: #F6EDE7;
+    --rg-card: #FBF3EE;
+    --rg-text: #4A342E;
+    --rg-muted: #8A6F63;
+    --rg-accent: #C99A8C;
+    --rg-border: #E0CBBF;
+
+    --rb-bg: #EAEDE6;
+    --rb-card: #E6E9E1;
+    --rb-text: #2E3327;
+    --rb-muted: #5C6653;
+    --rb-accent: #6B7F5E;
+    --rb-border: #C9D0BE;
+
+    --sg-bg: #F1EBF3;
+    --sg-card: #F6F0F7;
+    --sg-text: #3E3347;
+    --sg-muted: #7A6C86;
+    --sg-accent: #A489B5;
+    --sg-border: #DDCFE3;
+
+    --sb-bg: #24262A;
+    --sb-card: #202226;
+    --sb-text: #ECEAE6;
+    --sb-muted: #9BA3A8;
+    --sb-accent: #7E96A6;
+    --sb-border: #383B40;
+
     --gap: 2px;
   }
 
@@ -114,7 +143,7 @@
   .hero-sub {
     font-size: 15px;
     color: var(--girl-muted);
-    max-width: 400px;
+    max-width: 420px;
     margin: 0 auto 2.5rem;
     line-height: 1.75;
   }
@@ -128,6 +157,21 @@
     color: var(--girl-muted);
   }
 
+  /* Collection tabs */
+  .collection-tab {
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    margin-bottom: var(--gap);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .tab-clean    { background: var(--girl-bg); color: var(--girl-accent); }
+  .tab-reading  { background: var(--rg-bg);   color: var(--rg-accent); }
+  .tab-sober    { background: var(--sg-bg);   color: var(--sg-accent); }
+
+  /* Split / card base */
   .split {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -140,8 +184,6 @@
     display: flex;
     flex-direction: column;
   }
-  .card-girl { background: var(--girl-card); border-radius: 0 0 0 16px; }
-  .card-boy  { background: var(--boy-card);  border-radius: 0 0 16px 0; }
 
   .card-label {
     font-size: 10px;
@@ -149,9 +191,6 @@
     text-transform: uppercase;
     margin-bottom: 1rem;
   }
-  .card-girl .card-label { color: var(--girl-accent); }
-  .card-boy  .card-label { color: var(--boy-accent); }
-
   .card-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 32px;
@@ -159,18 +198,12 @@
     line-height: 1.15;
     margin-bottom: 0.9rem;
   }
-  .card-girl .card-title { color: var(--girl-text); }
-  .card-boy  .card-title { color: var(--boy-text); }
-
   .card-desc {
     font-size: 13.5px;
     line-height: 1.8;
     margin-bottom: 1.75rem;
     flex: 1;
   }
-  .card-girl .card-desc { color: var(--girl-muted); }
-  .card-boy  .card-desc { color: var(--boy-muted); }
-
   .feature-list { list-style: none; margin-bottom: 2rem; }
   .feature-list li {
     font-size: 12.5px;
@@ -180,22 +213,14 @@
     align-items: center;
     border-bottom: 0.5px solid;
   }
-  .card-girl .feature-list li { color: var(--girl-muted); border-color: var(--girl-border); }
-  .card-boy  .feature-list li { color: var(--boy-muted);  border-color: var(--boy-border); }
-
   .tick { font-size: 10px; }
-  .card-girl .tick { color: var(--girl-accent); }
-  .card-boy  .tick { color: var(--boy-accent); }
-
   .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 1.25rem; }
   .price {
     font-family: 'Cormorant Garamond', serif;
     font-size: 26px;
     font-weight: 300;
   }
-  .card-girl .price { color: var(--girl-text); }
-  .card-boy  .price { color: var(--boy-text); }
-  .price-note { font-size: 12px; color: #B0A090; }
+  .price-note { font-size: 12px; }
 
   .btn {
     display: block;
@@ -214,8 +239,75 @@
     transition: opacity 0.18s;
   }
   .btn:hover { opacity: 0.78; }
+
+  /* Clean collection colors */
+  .card-girl { background: var(--girl-card); border-radius: 0 0 0 16px; }
+  .card-boy  { background: var(--boy-card);  border-radius: 0 0 16px 0; }
+  .card-girl .card-label { color: var(--girl-accent); }
+  .card-boy  .card-label { color: var(--boy-accent); }
+  .card-girl .card-title { color: var(--girl-text); }
+  .card-boy  .card-title { color: var(--boy-text); }
+  .card-girl .card-desc { color: var(--girl-muted); }
+  .card-boy  .card-desc { color: var(--boy-muted); }
+  .card-girl .feature-list li { color: var(--girl-muted); border-color: var(--girl-border); }
+  .card-boy  .feature-list li { color: var(--boy-muted);  border-color: var(--boy-border); }
+  .card-girl .tick { color: var(--girl-accent); }
+  .card-boy  .tick { color: var(--boy-accent); }
+  .card-girl .price { color: var(--girl-text); }
+  .card-boy  .price { color: var(--boy-text); }
+  .card-girl .price-note, .card-boy .price-note { color: #B0A090; }
   .btn-girl { background: var(--girl-text); color: var(--girl-card); }
   .btn-boy  { background: var(--boy-text);  color: var(--boy-bg); }
+
+  /* Reading collection colors */
+  .card-reading-girl { background: var(--rg-card); border-radius: 0 0 0 16px; }
+  .card-reading-boy  { background: var(--rb-card); border-radius: 0 0 16px 0; }
+  .card-reading-girl .card-label { color: var(--rg-accent); }
+  .card-reading-boy  .card-label { color: var(--rb-accent); }
+  .card-reading-girl .card-title { color: var(--rg-text); }
+  .card-reading-boy  .card-title { color: var(--rb-text); }
+  .card-reading-girl .card-desc { color: var(--rg-muted); }
+  .card-reading-boy  .card-desc { color: var(--rb-muted); }
+  .card-reading-girl .feature-list li { color: var(--rg-muted); border-color: var(--rg-border); }
+  .card-reading-boy  .feature-list li { color: var(--rb-muted); border-color: var(--rb-border); }
+  .card-reading-girl .tick { color: var(--rg-accent); }
+  .card-reading-boy  .tick { color: var(--rb-accent); }
+  .card-reading-girl .price { color: var(--rg-text); }
+  .card-reading-boy  .price { color: var(--rb-text); }
+  .card-reading-girl .price-note, .card-reading-boy .price-note { color: #A6968C; }
+  .btn-reading-girl { background: var(--rg-text); color: var(--rg-card); }
+  .btn-reading-boy  { background: var(--rb-text); color: var(--rb-bg); }
+
+  /* Sober collection colors */
+  .card-sober-girl { background: var(--sg-card); border-radius: 0 0 0 16px; }
+  .card-sober-boy  { background: var(--sb-card); border-radius: 0 0 16px 0; }
+  .card-sober-girl .card-label { color: var(--sg-accent); }
+  .card-sober-boy  .card-label { color: var(--sb-accent); }
+  .card-sober-girl .card-title { color: var(--sg-text); }
+  .card-sober-boy  .card-title { color: var(--sb-text); }
+  .card-sober-girl .card-desc { color: var(--sg-muted); }
+  .card-sober-boy  .card-desc { color: var(--sb-muted); }
+  .card-sober-girl .feature-list li { color: var(--sg-muted); border-color: var(--sg-border); }
+  .card-sober-boy  .feature-list li { color: var(--sb-muted); border-color: var(--sb-border); }
+  .card-sober-girl .tick { color: var(--sg-accent); }
+  .card-sober-boy  .tick { color: var(--sb-accent); }
+  .card-sober-girl .price { color: var(--sg-text); }
+  .card-sober-boy  .price { color: var(--sb-text); }
+  .card-sober-girl .price-note { color: #A99BB0; }
+  .card-sober-boy  .price-note { color: #5A5F63; }
+  .btn-sober-girl { background: var(--sg-text); color: var(--sg-card); }
+  .btn-sober-boy  { background: var(--sb-accent); color: var(--sb-bg); }
+
+  .disclaimer-strip {
+    background: var(--sg-card);
+    border-radius: 16px;
+    padding: 1.1rem 2rem;
+    margin-bottom: var(--gap);
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--sg-muted);
+    line-height: 1.6;
+  }
 
   .hustler {
     background: var(--hustle-bg);
@@ -372,8 +464,13 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
   }
+  .quote-strip-secondary {
+    grid-template-columns: 1fr 1fr;
+  }
   .quote { border-left: 1.5px solid var(--girl-border); padding-left: 1.25rem; }
   .quote-dark { border-left-color: var(--hustle-gold); }
+  .quote-reading { border-left-color: var(--rg-accent); }
+  .quote-sober { border-left-color: var(--sg-accent); }
   .quote-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 17px;
@@ -401,57 +498,93 @@
     gap: 3rem;
     align-items: center;
   }
+  .bundle-header { text-align: center; margin-bottom: 2.25rem; }
   .bundle-eyebrow {
     font-size: 10px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--girl-accent);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.6rem;
   }
   .bundle-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 300;
     color: var(--girl-card);
-    line-height: 1.1;
-    margin-bottom: 1rem;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
   }
   .bundle-sub {
-    font-size: 14px;
-    color: #8A7A6C;
-    line-height: 1.75;
+    font-size: 13.5px;
+    color: #9C8C7C;
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 0 auto;
   }
-  .bundle-right { text-align: right; }
-  .bundle-price {
+
+  .bundles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 8px;
+  }
+  .bundle-card {
+    background: #453A2E;
+    border-radius: 10px;
+    padding: 1.5rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .bundle-card-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
+    font-size: 19px;
     font-weight: 300;
     color: var(--girl-card);
-    line-height: 1;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
   }
-  .bundle-was {
-    font-size: 13px;
-    color: #5A4A3A;
-    text-decoration: line-through;
-    margin-bottom: 1.75rem;
-    display: block;
+  .bundle-swatches { display: flex; align-items: center; gap: 6px; margin-bottom: 0.75rem; }
+  .swatch { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .bundle-includes {
+    font-size: 11px;
+    color: #B8A996;
+    letter-spacing: 0.02em;
+  }
+  .bundle-card-desc {
+    font-size: 12px;
+    color: #A0917F;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+  .bundle-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .bundle-card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--girl-card);
   }
   .btn-bundle {
     display: inline-block;
-    padding: 14px 2.5rem;
+    padding: 9px 16px;
     background: var(--girl-bg);
     color: var(--girl-text);
     font-family: 'DM Sans', sans-serif;
-    font-size: 11.5px;
+    font-size: 10.5px;
     font-weight: 400;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    border-radius: 6px;
+    border-radius: 5px;
     text-decoration: none;
     border: none;
     cursor: pointer;
     transition: opacity 0.18s;
+    white-space: nowrap;
   }
   .btn-bundle:hover { opacity: 0.82; }
 
@@ -483,14 +616,17 @@
   .footer-links a:hover { color: var(--girl-text); }
 
   @media (max-width: 640px) {
-    .split, .hustler, .quote-strip, .bundle { grid-template-columns: 1fr; }
-    .card-girl { border-radius: 0; }
-    .card-boy  { border-radius: 0 0 16px 16px; }
+    .split, .hustler, .quote-strip { grid-template-columns: 1fr; }
+    .bundles-grid { grid-template-columns: 1fr 1fr; }
+    .card-girl, .card-reading-girl, .card-sober-girl { border-radius: 0; }
+    .card-boy, .card-reading-boy, .card-sober-boy { border-radius: 0 0 16px 16px; }
     .hero { padding: 3.5rem 1.75rem 3rem; }
     .hustler { padding: 2.5rem 1.75rem; }
-    .bundle-right { text-align: left; }
-    .bundle-price { font-size: 40px; }
     .nav-links { display: none; }
+  }
+
+  @media (max-width: 460px) {
+    .bundles-grid { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -516,13 +652,15 @@
   <div class="hero">
     <p class="hero-eyebrow">Clean Routine Co</p>
     <h1 class="hero-title">Your routine,<br><em>on paper.</em></h1>
-    <p class="hero-sub">Three digital logbooks for people who take their rituals seriously — without making a big deal of it.</p>
+    <p class="hero-sub">Digital logbooks for people who take their routines seriously — without making a big deal of it.</p>
     <div class="pill-row">
       <span class="pill">Digital PDF</span>
       <span class="pill">Print or annotate</span>
       <span class="pill">Instant download</span>
     </div>
   </div>
+
+  <p class="collection-tab tab-clean">Clean Collection</p>
 
   <div class="split">
     <div class="card card-girl">
@@ -538,10 +676,10 @@
         <li>Daily Journal <span class="tick">&#10003;</span></li>
       </ul>
       <div class="price-row">
-        <span class="price">$25</span>
+        <span class="price">$13</span>
         <span class="price-note">single &middot; instant download</span>
       </div>
-      <a href="https://cleanroutineco.gumroad.com/l/ndvigg" class="btn btn-girl">Get the logbook</a>
+      <a href="https://cleanroutineco.gumroad.com/" class="btn btn-girl">Get the logbook</a>
     </div>
 
     <div class="card card-boy">
@@ -557,10 +695,10 @@
         <li>Daily Journal <span class="tick">&#10003;</span></li>
       </ul>
       <div class="price-row">
-        <span class="price">$25
+        <span class="price">$13</span>
         <span class="price-note">single &middot; instant download</span>
       </div>
-      <a href="https://cleanroutineco.gumroad.com/l/usndkg" class="btn btn-boy">Get the logbook</a>
+      <a href="https://cleanroutineco.gumroad.com/" class="btn btn-boy">Get the logbook</a>
     </div>
   </div>
 
@@ -571,15 +709,15 @@
       <h2 class="hustler-title">Hustler&#8217;s<br><em>Logbook</em></h2>
       <p class="hustler-desc">War room meets trading desk. Built for the person running income streams, tracking trades, and logging the work every single day.</p>
       <div class="hustler-price-row">
-        <span class="hustler-price">$25</span>
+        <span class="hustler-price">$13</span>
         <span class="hustler-price-note">single &middot; instant download</span>
       </div>
-      <a href="https://cleanroutineco.gumroad.com/l/exdqd" class="btn-hustler">Get the logbook</a>
+      <a href="https://cleanroutineco.gumroad.com/" class="btn-hustler">Get the logbook</a>
     </div>
     <div>
       <div class="hustler-stats">
         <div class="stat">
-          <div class="stat-val">12</div>
+          <div class="stat-val">9</div>
           <div class="stat-label">pages inside</div>
         </div>
         <div class="stat">
@@ -601,18 +739,104 @@
     </div>
   </div>
 
+  <p class="collection-tab tab-reading">Reading Collection</p>
+
+  <div class="split">
+    <div class="card card-reading-girl">
+      <p class="card-label">For her</p>
+      <h2 class="card-title">Reading Girl<br>Logbook</h2>
+      <p class="card-desc">A place to track your TBR, log every book, and make reading the softest part of your day.</p>
+      <ul class="feature-list">
+        <li>Reading Vision Board <span class="tick">&#10003;</span></li>
+        <li>Monthly Book Vault <span class="tick">&#10003;</span></li>
+        <li>Thoughts on New Reads <span class="tick">&#10003;</span></li>
+        <li>Food &amp; Fuel / Movement <span class="tick">&#10003;</span></li>
+        <li>Mind, Wind-Down, Journal <span class="tick">&#10003;</span></li>
+        <li>Daily Reading Log <span class="tick">&#10003;</span></li>
+      </ul>
+      <div class="price-row">
+        <span class="price">$13</span>
+        <span class="price-note">single &middot; instant download</span>
+      </div>
+      <a href="https://cleanroutineco.gumroad.com/" class="btn btn-reading-girl">Get the logbook</a>
+    </div>
+
+    <div class="card card-reading-boy">
+      <p class="card-label">For him</p>
+      <h2 class="card-title">Reading Boy<br>Logbook</h2>
+      <p class="card-desc">Twenty pages a day, every day. Track what you read, what you took from it, and keep the habit honest.</p>
+      <ul class="feature-list">
+        <li>Vision Board <span class="tick">&#10003;</span></li>
+        <li>Monthly Book Vault <span class="tick">&#10003;</span></li>
+        <li>Thoughts on New Reads <span class="tick">&#10003;</span></li>
+        <li>Food &amp; Fuel / Movement <span class="tick">&#10003;</span></li>
+        <li>Mind, Wind-Down, Journal <span class="tick">&#10003;</span></li>
+        <li>Daily Reading Log <span class="tick">&#10003;</span></li>
+      </ul>
+      <div class="price-row">
+        <span class="price">$13</span>
+        <span class="price-note">single &middot; instant download</span>
+      </div>
+      <a href="https://cleanroutineco.gumroad.com/" class="btn btn-reading-boy">Get the logbook</a>
+    </div>
+  </div>
+
+  <p class="collection-tab tab-sober">Sober Collection</p>
+
+  <div class="split">
+    <div class="card card-sober-girl">
+      <p class="card-label">For her</p>
+      <h2 class="card-title">Sober Girl<br>Logbook</h2>
+      <p class="card-desc">One day, written down, becomes thirty. A gentle daily record for the version of you that remembers the night before.</p>
+      <ul class="feature-list">
+        <li>Sober Vision Board <span class="tick">&#10003;</span></li>
+        <li>Milestone Vault (streaks) <span class="tick">&#10003;</span></li>
+        <li>Wins &amp; Reflections <span class="tick">&#10003;</span></li>
+        <li>Food &amp; Fuel / Movement <span class="tick">&#10003;</span></li>
+        <li>Mind Check-In, Wind-Down <span class="tick">&#10003;</span></li>
+        <li>Daily Journal + Streak <span class="tick">&#10003;</span></li>
+      </ul>
+      <div class="price-row">
+        <span class="price">$13</span>
+        <span class="price-note">single &middot; instant download</span>
+      </div>
+      <a href="https://cleanroutineco.gumroad.com/" class="btn btn-sober-girl">Get the logbook</a>
+    </div>
+
+    <div class="card card-sober-boy">
+      <p class="card-label">For him</p>
+      <h2 class="card-title">Sober Boy<br>Logbook</h2>
+      <p class="card-desc">Clear-headed is a discipline too. Track the streak, respect the work, keep it honest.</p>
+      <ul class="feature-list">
+        <li>Vision Board <span class="tick">&#10003;</span></li>
+        <li>Milestone Vault (streaks) <span class="tick">&#10003;</span></li>
+        <li>Wins &amp; Reflections <span class="tick">&#10003;</span></li>
+        <li>Food &amp; Fuel / Movement <span class="tick">&#10003;</span></li>
+        <li>Mind Check-In, Wind-Down <span class="tick">&#10003;</span></li>
+        <li>Daily Journal + Streak <span class="tick">&#10003;</span></li>
+      </ul>
+      <div class="price-row">
+        <span class="price">$13</span>
+        <span class="price-note">single &middot; instant download</span>
+      </div>
+      <a href="https://cleanroutineco.gumroad.com/" class="btn btn-sober-boy">Get the logbook</a>
+    </div>
+  </div>
+
+  <p class="disclaimer-strip">A tool to support your routine — not a replacement for professional care.</p>
+
   <div class="pages-strip">
-    <p class="strip-label">Inside every logbook</p>
-    <h2 class="strip-title">What&#8217;s inside, every day</h2>
+    <p class="strip-label">Shared across every logbook</p>
+    <h2 class="strip-title">The core, every day</h2>
     <div class="pages-grid">
       <div class="page-chip"><span class="icon">&#9788;</span>Timetable</div>
       <div class="page-chip"><span class="icon">&#9670;</span>Food &amp; Fuel</div>
       <div class="page-chip"><span class="icon">&#9651;</span>Movement</div>
-      <div class="page-chip"><span class="icon">&#9635;</span>Reading</div>
       <div class="page-chip"><span class="icon">&#9632;</span>Mind &amp; Focus</div>
       <div class="page-chip"><span class="icon">&#9790;</span>Wind-Down</div>
       <div class="page-chip"><span class="icon">&#9998;</span>Journal</div>
       <div class="page-chip"><span class="icon">&#9671;</span>Vision Board</div>
+      <div class="page-chip"><span class="icon">&#9635;</span>Monthly Vault</div>
     </div>
   </div>
 
@@ -631,16 +855,150 @@
     </div>
   </div>
 
-  <div class="bundle">
-    <div>
-      <p class="bundle-eyebrow">Better together</p>
-      <h2 class="bundle-title">The Clean<br>Bundle</h2>
-      <p class="bundle-sub">All three logbooks. For couples, for gifting, or for anyone who wants the full stack.</p>
+  <div class="quote-strip quote-strip-secondary">
+    <div class="quote quote-reading">
+      <p class="quote-text">&#8220;Finally reading feels like mine again, not just another tab I forgot to close.&#8221;</p>
+      <p class="quote-attr">Reading Girl user</p>
     </div>
-    <div class="bundle-right">
-      <p class="bundle-price">$30</p>
-      <span class="bundle-was">$50 if bought separately</span>
-      <a href="https://cleanroutineco.gumroad.com/l/bnadqm" class="btn-bundle">Get the bundle</a>
+    <div class="quote quote-sober">
+      <p class="quote-text">&#8220;Thirty days written down looks nothing like thirty days just survived.&#8221;</p>
+      <p class="quote-attr">Sober Boy user</p>
+    </div>
+  </div>
+
+  <div class="bundle">
+    <div class="bundle-header">
+      <p class="bundle-eyebrow">Better together</p>
+      <h2 class="bundle-title">Pick any two, for $19</h2>
+      <p class="bundle-sub">Same lineup, matched into pairs — or mixed across lines for something more specific.</p>
+    </div>
+
+    <div class="bundles-grid">
+      <div class="bundle-card">
+        <p class="bundle-card-name">Clean Bundle</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--girl-accent);"></span>
+          <span class="swatch" style="background: var(--boy-accent);"></span>
+          <span class="bundle-includes">Clean Girl + Clean Boy</span>
+        </div>
+        <p class="bundle-card-desc">For couples, for gifting, or just for yourself twice over.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
+
+      <div class="bundle-card">
+        <p class="bundle-card-name">Reading Bundle</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--rg-accent);"></span>
+          <span class="swatch" style="background: var(--rb-accent);"></span>
+          <span class="bundle-includes">Reading Girl + Reading Boy</span>
+        </div>
+        <p class="bundle-card-desc">Two reading habits, one shared shelf.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
+
+      <div class="bundle-card">
+        <p class="bundle-card-name">Sober Bundle</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--sg-accent);"></span>
+          <span class="swatch" style="background: var(--sb-accent);"></span>
+          <span class="bundle-includes">Sober Girl + Sober Boy</span>
+        </div>
+        <p class="bundle-card-desc">Track the streak, together or apart.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
+
+      <div class="bundle-card">
+        <p class="bundle-card-name">Build &amp; Read</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--hustle-gold);"></span>
+          <span class="swatch" style="background: var(--rb-accent);"></span>
+          <span class="bundle-includes">Hustler&#8217;s + Reading Boy</span>
+        </div>
+        <p class="bundle-card-desc">Twenty pages before the market opens.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
+
+      <div class="bundle-card">
+        <p class="bundle-card-name">Soft Life Duo</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--girl-accent);"></span>
+          <span class="swatch" style="background: var(--rg-accent);"></span>
+          <span class="bundle-includes">Clean Girl + Reading Girl</span>
+        </div>
+        <p class="bundle-card-desc">Skincare in the morning, a chapter before bed.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
+
+      <div class="bundle-card">
+        <p class="bundle-card-name">Discipline Stack</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--hustle-gold);"></span>
+          <span class="swatch" style="background: var(--sb-accent);"></span>
+          <span class="bundle-includes">Hustler&#8217;s + Sober Boy</span>
+        </div>
+        <p class="bundle-card-desc">Income tracked. Streak tracked. Nothing left unmeasured.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
+
+      <div class="bundle-card">
+        <p class="bundle-card-name">Grounded &amp; Well-Read</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--boy-accent);"></span>
+          <span class="swatch" style="background: var(--rb-accent);"></span>
+          <span class="bundle-includes">Clean Boy + Reading Boy</span>
+        </div>
+        <p class="bundle-card-desc">Cologne rotation and a reading habit, same guy.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
+
+      <div class="bundle-card">
+        <p class="bundle-card-name">Clear &amp; Driven</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--hustle-gold);"></span>
+          <span class="swatch" style="background: var(--sg-accent);"></span>
+          <span class="bundle-includes">Hustler&#8217;s + Sober Girl</span>
+        </div>
+        <p class="bundle-card-desc">The streak and the scoreboard, both tracked.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
+
+      <div class="bundle-card">
+        <p class="bundle-card-name">Two Paths</p>
+        <div class="bundle-swatches">
+          <span class="swatch" style="background: var(--girl-accent);"></span>
+          <span class="swatch" style="background: var(--sb-accent);"></span>
+          <span class="bundle-includes">Clean Girl + Sober Boy</span>
+        </div>
+        <p class="bundle-card-desc">One for you, one for someone you&#8217;re rooting for.</p>
+        <div class="bundle-card-foot">
+          <span class="bundle-card-price">$19</span>
+          <a href="https://cleanroutineco.gumroad.com/" class="btn-bundle">Get it</a>
+        </div>
+      </div>
     </div>
   </div>
 
