@@ -64,6 +64,41 @@ ul { list-style: none; }
   --mono:  'DM Sans', sans-serif;
 }
 
+   /* ============================================
+   HOW IT WORKS
+   ============================================ */
+.how-block { background: var(--card); border-radius: var(--r-md); padding: 3rem 2.5rem; }
+.how-head { text-align: center; margin-bottom: 2.25rem; }
+.how-head h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin-bottom: .5rem; }
+.how-head p { color: var(--ink-soft); font-size: .95rem; max-width: 46ch; margin: 0 auto; }
+.how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--seam); margin-bottom: 1.4rem; }
+.how-step {
+  background: var(--paper); border-radius: var(--r-sm); padding: 1.5rem 1.25rem;
+  display: flex; flex-direction: column; gap: .6rem; position: relative;
+}
+.how-step .no {
+  font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--brass-deep);
+  line-height: 1;
+}
+.how-step .ic { color: var(--brass-deep); width: 20px; height: 20px; }
+.how-step h3 { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: .02em; color: var(--ink); }
+.how-step p { font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); }
+.how-note {
+  display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
+  font-size: 12px; color: var(--ink-soft); text-align: center;
+}
+.how-note strong { color: var(--ink); font-weight: 600; }
+.how-note .ic { width: 14px; height: 14px; color: var(--brass-deep); }
+
+@media (max-width: 900px) {
+  .how-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .how-block { padding: 2.25rem 1.35rem; }
+  .how-steps { grid-template-columns: 1fr; }
+}
+
+
 /* ============================================
    BASE
    ============================================ */
@@ -417,6 +452,8 @@ body::before {
 }
 @media (max-width: 560px) { .stories-block { padding: 2.5rem 1.35rem; } }
 
+   
+   
 /* ============================================
    BUNDLES
    ============================================ */
@@ -607,6 +644,45 @@ body::before {
       <p class="tracker-count" id="trackerCount">0 / 7 logged</p>
     </div>
   </header>
+   
+ <!-- HOW IT WORKS -->
+  <section class="how-block reveal" id="how-it-works">
+    <div class="how-head">
+      <h2>How it works</h2>
+      <p>Most people use theirs like this &mdash; a tablet, a stylus, and a habit that fits in your pocket.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <span class="no">01</span>
+        <svg class="ic" aria-hidden="true"><use href="#ic-download"/></svg>
+        <h3>Pick &amp; download</h3>
+        <p>Choose your logbook, check out on Gumroad, get the PDF in your inbox instantly.</p>
+      </div>
+      <div class="how-step">
+        <span class="no">02</span>
+        <svg class="ic" aria-hidden="true"><use href="#ic-tablet"/></svg>
+        <h3>Open on your tablet</h3>
+        <p>Import it into GoodNotes, Notability, or your device&#8217;s built-in markup tool.</p>
+      </div>
+      <div class="how-step">
+        <span class="no">03</span>
+        <svg class="ic" aria-hidden="true"><use href="#ic-pencil"/></svg>
+        <h3>Fill it in daily</h3>
+        <p>Tap between sections, write with a stylus, and log your day the same way you would on paper.</p>
+      </div>
+      <div class="how-step">
+        <span class="no">04</span>
+        <svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>
+        <h3>Or print it</h3>
+        <p>Prefer pen and paper? Print any page at home, no annotation app required.</p>
+      </div>
+    </div>
+    <p class="how-note">
+      <svg class="ic" aria-hidden="true"><use href="#ic-tablet"/></svg>
+      Works with <strong>GoodNotes</strong>, <strong>Notability</strong>, and any PDF annotation app
+    </p>
+  </section>
+
 
   <!-- INDEX -->
   <section class="index-block reveal" id="index">
