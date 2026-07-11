@@ -373,6 +373,11 @@ body::before {
 }
 .tracker-capture-success .ic { width: 16px; height: 16px; color: var(--brass-deep); flex-shrink: 0; }
 
+.tracker-capture-form[hidden],
+.tracker-capture-success[hidden] {
+  display: none;
+}
+
 @media (max-width: 480px) {
   .tracker-capture-form { flex-direction: column; }
   .tracker-capture-form .btn { width: 100%; }
@@ -781,7 +786,7 @@ body::before {
       <div class="tracker-capture" id="trackerCapture" hidden>
         <p class="tracker-capture-head">Keep this going in the real logbook.</p>
         <p class="tracker-capture-sub">Save your streak and get first look at new logbooks.</p>
-        <form class="tracker-capture-form" action="https://formspree.io/f/mqevrejw" method="POST">
+        <form class="tracker-capture-form" id="trackerCaptureForm" novalidate>
           <label for="trackerEmail" class="sr-only">Email address</label>
           <input type="email" id="trackerEmail" name="email" placeholder="you@email.com" autocomplete="email" required>
           <button type="submit" class="btn">Save my streak</button>
