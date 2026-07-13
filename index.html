@@ -353,6 +353,17 @@ body::before {
 .tracker-count {
   font-family: var(--sans); font-size: 11px; color: var(--ink-soft); margin-top: .6rem;
 }
+.tracker-unlock {
+  display: flex; align-items: center; gap: 6px; margin-top: 1rem; padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--ink);
+  text-decoration: none; animation: trackerUnlockIn .4s ease;
+}
+.tracker-unlock:hover { color: var(--brass-deep); }
+@keyframes trackerUnlockIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding: 3rem 1.75rem; }
@@ -494,6 +505,12 @@ body::before {
   background: var(--ink); color: var(--paper); border-radius: var(--r-md);
   padding: 0; overflow: hidden; position: relative;
   display: grid; grid-template-columns: 1.1fr 1fr; align-items: stretch;
+}
+.lead-block.is-pulsing { animation: leadPulse 1.4s ease; }
+@keyframes leadPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(212,175,55,.55); }
+  60%  { box-shadow: 0 0 0 14px rgba(212,175,55,0); }
+  100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
 }
 .lead-block::before {
   content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5;
@@ -959,6 +976,7 @@ body::before {
       </div>
       <p class="tracker-status" id="trackerStatus">Tap a day to see how it feels.</p>
       <p class="tracker-count" id="trackerCount">0 / 7 logged</p>
+      <a href="#leadMagnet" class="tracker-unlock" id="trackerUnlock" hidden>Get a free page like this one &darr;</a>
     </div>
   </header>
    
@@ -1371,6 +1389,48 @@ body::before {
     </div>
   </section>
 
+  <!-- LEAD MAGNET -->
+  <section class="lead-block reveal" id="leadMagnet">
+    <div class="lead-copy">
+      <span class="eyebrow">Free sample page</span>
+      <h2>Try a full page before you buy the logbook.</h2>
+      <p class="lead-sub">Get one real page from the Timetable &mdash; the page every logbook shares &mdash; sent straight to your inbox as a printable PDF.</p>
+      <ul class="lead-points">
+        <li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>One real page, print-ready</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>No account, no spam</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>Sent in under a minute</li>
+      </ul>
+      <div class="lead-form-wrap">
+        <form class="lead-form" id="leadForm" action="https://formspree.io/f/mqevrejw" method="POST">
+          <input type="hidden" name="source" value="lead-magnet">
+          <div class="lead-form-row">
+            <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
+            <button type="submit" class="btn">Send it to me</button>
+          </div>
+          <p class="lead-fine">One email, no list spam. Unsubscribe anytime.</p>
+        </form>
+      </div>
+      <div class="lead-success">
+        <svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>
+        <span>Check your inbox &mdash; your free page is on its way.</span>
+      </div>
+    </div>
+    <div class="lead-visual">
+      <div class="lead-page-stack">
+        <div class="stack-behind"></div>
+        <div class="lead-page-card">
+          <span class="lp-stamp">Free page</span>
+          <p class="lp-label">Timetable</p>
+          <p class="lp-title">Your day, blocked out</p>
+          <div class="lp-row"><span class="lp-time">6:00</span><span class="lp-bar"></span></div>
+          <div class="lp-row"><span class="lp-time">9:00</span><span class="lp-bar"></span></div>
+          <div class="lp-row"><span class="lp-time">12:00</span><span class="lp-bar"></span></div>
+          <div class="lp-row"><span class="lp-time">18:00</span><span class="lp-bar"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS -->
   <section class="stories-block reveal">
     <h2>What each one is for</h2>
@@ -1623,6 +1683,8 @@ function crcSwitchGalleryTab(btn, panelId) {
     var done = document.querySelectorAll('.day.is-done').length;
     statusEl.textContent = messages[done];
     countEl.textContent = done + ' / 7 logged';
+    var unlockEl = document.getElementById('trackerUnlock');
+    if (unlockEl) unlockEl.hidden = done !== 7;
   }
 
   days.forEach(function (day) {
@@ -1633,6 +1695,47 @@ function crcSwitchGalleryTab(btn, panelId) {
       updateStatus();
     });
   });
+
+  var trackerUnlockLink = document.getElementById('trackerUnlock');
+  if (trackerUnlockLink) {
+    trackerUnlockLink.addEventListener('click', function () {
+      var target = document.getElementById('leadMagnet');
+      if (!target) return;
+      window.setTimeout(function () {
+        target.classList.add('is-pulsing');
+        target.addEventListener('animationend', function () {
+          target.classList.remove('is-pulsing');
+        }, { once: true });
+      }, 350);
+    });
+  }
+
+  /* lead magnet form */
+  var leadForm = document.getElementById('leadForm');
+  if (leadForm) {
+    leadForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var submitBtn = leadForm.querySelector('button[type="submit"]');
+      var originalLabel = submitBtn.textContent;
+      submitBtn.textContent = 'Sending\u2026';
+      submitBtn.disabled = true;
+      fetch(leadForm.action, {
+        method: 'POST',
+        body: new FormData(leadForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          document.getElementById('leadMagnet').classList.add('is-sent');
+        } else {
+          submitBtn.textContent = originalLabel;
+          submitBtn.disabled = false;
+        }
+      }).catch(function () {
+        submitBtn.textContent = originalLabel;
+        submitBtn.disabled = false;
+      });
+    });
+  }
 
   /* logbook finder */
   var finderVibe = null;
