@@ -690,7 +690,7 @@ body::before {
 .try-page-foot .foot-btn {
   display: flex; align-items: center; justify-content: center; gap: 7px;
   width: 100%; padding: 12px 16px; border-radius: 999px;
-  background: var(--acc); color: #fff; text-decoration: none;
+  background: var(--ink); color: var(--paper); text-decoration: none;
   font-family: var(--sans); font-size: 13px; font-weight: 600; white-space: nowrap;
   transition: transform .15s ease, box-shadow .15s ease, gap .15s ease;
 }
@@ -769,6 +769,7 @@ body::before {
     overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: 1.35rem;
     margin-inline: -1.35rem; padding-inline: 1.35rem;
     -ms-overflow-style: none; scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 1.35rem, #000 calc(100% - 1.35rem), transparent 100%);
     mask-image: linear-gradient(to right, transparent 0, #000 1.35rem, #000 calc(100% - 1.35rem), transparent 100%);
   }
   .gallery-tabs::-webkit-scrollbar { display: none; }
