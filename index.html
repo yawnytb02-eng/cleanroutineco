@@ -35,7 +35,7 @@
       { "@type": "Question", "name": "Can I buy more than one?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Add any two logbooks to your cart and enter BUNDLE at checkout to save automatically." } },
       { "@type": "Question", "name": "Are the sober logbooks a substitute for treatment?", "acceptedAnswer": { "@type": "Answer", "text": "No. They're a tool to support a routine you're already building, not medical or clinical care. Please lean on a real professional for that part." } },
       { "@type": "Question", "name": "Do I need an iPad, or does this work on any device?", "acceptedAnswer": { "@type": "Answer", "text": "Any device that opens a PDF and lets you annotate it works -- iPad, Android tablet, laptop, or phone. Or skip the screen entirely and print it." } },
-      { "@type": "Question", "name": "Something's wrong with my download. Now what?", "acceptedAnswer": { "@type": "Answer", "text": "Reach out to us through Gumroad and we'll sort it out." } }
+      { "@type": "Question", "name": "Something's wrong with my download. Now what?", "acceptedAnswer": { "@type": "Answer", "text": "Use the contact form on this page and we'll sort it out." } }
     ] }
   ]
 }
@@ -378,6 +378,12 @@ body::before {
    INDEX STRIP
    ============================================ */
 .index-block { background: var(--card); border-radius: var(--r-md); padding: 3rem 2.5rem; }
+.index-divider {
+  display: flex; align-items: center; gap: 14px;
+  margin: 2.4rem 0 1.6rem;
+  font-family: var(--sans); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+}
+.index-divider::before, .index-divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 .index-head { text-align: center; margin-bottom: 2.25rem; }
 .index-head h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin-bottom: .5rem; }
 .index-head p { color: var(--ink-soft); font-size: .95rem; }
@@ -674,22 +680,26 @@ body::before {
 .try-page.on-ink .try-slider-row input[type="range"]::-moz-range-thumb { background: var(--brass); border-color: var(--ink-2); }
 
 .try-page-foot {
-  display: flex; align-items: center; justify-content: space-between; gap: .6rem;
-  margin-top: .95rem; padding-top: .85rem; border-top: 1px solid var(--line);
-  font-family: var(--sans); font-size: 11px; color: var(--ink-soft);
+  margin-top: .95rem; padding-top: .9rem; border-top: 1px solid var(--line);
 }
-.try-page.on-ink .try-page-foot { border-color: var(--line-on-ink); color: var(--paper-soft); }
-.try-page-foot a {
-  color: var(--acc); text-decoration: none; font-weight: 500; white-space: nowrap;
-  display: inline-flex; align-items: center; gap: 4px;
+.try-page.on-ink .try-page-foot { border-color: var(--line-on-ink); }
+.try-page-foot .foot-caption {
+  display: block; font-family: var(--sans); font-size: 11px; color: var(--ink-soft); margin-bottom: .7rem;
 }
-.try-page.on-ink .try-page-foot a { color: var(--brass); }
-.try-page-foot a:hover { gap: 6px; }
-.try-page-foot a svg { width: 11px; height: 11px; }
+.try-page.on-ink .try-page-foot .foot-caption { color: var(--paper-soft); }
+.try-page-foot .foot-btn {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  width: 100%; padding: 12px 16px; border-radius: 999px;
+  background: var(--acc); color: #fff; text-decoration: none;
+  font-family: var(--sans); font-size: 13px; font-weight: 600; white-space: nowrap;
+  transition: transform .15s ease, box-shadow .15s ease, gap .15s ease;
+}
+.try-page-foot .foot-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-1); gap: 10px; }
+.try-page-foot .foot-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+.try-page.on-ink .foot-btn { background: var(--brass); color: var(--ink); }
 
 @media (max-width: 380px) {
   .try-streak-row { flex-wrap: wrap; }
-  .try-page-foot { flex-direction: column; align-items: flex-start; gap: .5rem; }
 }
 
 /* ============================================
@@ -754,8 +764,15 @@ body::before {
 
 @media (max-width: 640px) {
   .gallery-block { padding: 2.5rem 1.35rem; }
-  .gallery-tabs { gap: 6px; }
-  .gallery-tab { padding: 8px 13px; font-size: 11.5px; }
+  .gallery-tabs {
+    flex-wrap: nowrap; justify-content: flex-start; gap: 6px;
+    overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: 1.35rem;
+    margin-inline: -1.35rem; padding-inline: 1.35rem;
+    -ms-overflow-style: none; scrollbar-width: none;
+    mask-image: linear-gradient(to right, transparent 0, #000 1.35rem, #000 calc(100% - 1.35rem), transparent 100%);
+  }
+  .gallery-tabs::-webkit-scrollbar { display: none; }
+  .gallery-tab { flex-shrink: 0; scroll-snap-align: start; padding: 8px 13px; font-size: 11.5px; }
 }
 
 .inside-block { background: var(--paper); border-radius: var(--r-md); padding: 3.25rem 2.5rem; }
@@ -846,6 +863,15 @@ body::before {
    ============================================ */
 .faq-block { background: var(--paper); border-radius: var(--r-md); padding: 3.25rem 2.5rem; }
 .faq-block > h2 { text-align: center; font-size: clamp(1.6rem, 2.4vw, 2rem); margin-bottom: 2rem; }
+
+.contact-success {
+  display: none; align-items: center; justify-content: center; gap: .7rem;
+  max-width: 520px; margin: 0 auto; padding: 1.5rem; text-align: center;
+  font-family: var(--sans); font-size: .95rem; color: var(--ink);
+}
+.contact-success .ic { width: 22px; height: 22px; color: var(--brass-deep); flex-shrink: 0; }
+#contact.is-sent .contact-form-wrap { display: none; }
+#contact.is-sent .contact-success { display: flex; }
 .faq-list { max-width: 720px; margin: 0 auto; }
 .faq-item { border-bottom: 1px solid var(--line); }
 .faq-item summary {
@@ -862,6 +888,8 @@ body::before {
 .faq-item .plus::after { left: 50%; top: 0; height: 100%; width: 1.5px; transform: translateX(-50%); }
 .faq-item[open] .plus::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
 .faq-item p.answer { font-size: 13.5px; line-height: 1.75; color: var(--ink-soft); padding: 0 .2rem 1.4rem; max-width: 62ch; }
+.faq-item p.answer a { color: var(--ink); border-bottom: 1px solid var(--line); transition: opacity .2s; }
+.faq-item p.answer a:hover { opacity: .7; }
 
 @media (max-width: 560px) { .faq-block { padding: 2.5rem 1.35rem; } }
 
@@ -1022,11 +1050,11 @@ body::before {
     </p>
   </section>
 
-  <!-- FINDER -->
-  <section class="finder-block reveal" id="finder">
+  <!-- FINDER + INDEX -->
+  <section class="index-block reveal" id="index">
     <div class="finder-head">
       <h2>Not sure which one&#8217;s yours?</h2>
-      <p>Two taps and we&#8217;ll point you to the right logbook.</p>
+      <p>Two taps and we&#8217;ll point you to the right logbook &mdash; or scan all seven below.</p>
     </div>
     <p class="finder-label">Step 1 &mdash; pick a lane</p>
     <div class="finder-options" id="finderVibe">
@@ -1048,15 +1076,7 @@ body::before {
         <svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg>
       </a>
     </div>
-  </section>
-
-
-  <!-- INDEX -->
-  <section class="index-block reveal" id="index">
-    <div class="index-head">
-      <h2>Seven logbooks. Pick yours.</h2>
-      <p>Every collection shares the same core, tuned to a different life.</p>
-    </div>
+    <div class="index-divider">or browse all seven</div>
     <div class="index-grid">
       <a class="index-tile" style="--acc:var(--cg)" href="#clean-girl">
         <svg class="ic" aria-hidden="true"><use href="#ic-droplet"/></svg>
@@ -1246,8 +1266,8 @@ body::before {
           <span class="try-slider-val">8</span>
         </div>
         <div class="try-page-foot">
-          <span>This is 1 of 10 pages inside</span>
-          <a href="https://cleanroutineco.gumroad.com/l/ndvigg" target="_blank" rel="noopener noreferrer">See all 10<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+          <span class="foot-caption">You just tried 1 of 10 pages</span>
+          <a class="foot-btn" href="https://cleanroutineco.gumroad.com/l/ndvigg" target="_blank" rel="noopener noreferrer">Get the full logbook &mdash; $9<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
       </div>
@@ -1261,8 +1281,8 @@ body::before {
           <span class="try-slider-val">9</span>
         </div>
         <div class="try-page-foot">
-          <span>This is 1 of 10 pages inside</span>
-          <a href="https://cleanroutineco.gumroad.com/l/usndkg" target="_blank" rel="noopener noreferrer">See all 10<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+          <span class="foot-caption">You just tried 1 of 10 pages</span>
+          <a class="foot-btn" href="https://cleanroutineco.gumroad.com/l/usndkg" target="_blank" rel="noopener noreferrer">Get the full logbook &mdash; $9<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
       </div>
@@ -1283,8 +1303,8 @@ body::before {
           <input type="range" min="0" max="10" step="1" value="8" aria-label="Discipline rating out of 10" oninput="this.parentElement.previousElementSibling.querySelector('.try-slider-val').textContent=this.value">
         </div>
         <div class="try-page-foot">
-          <span>This is 1 of 9 pages inside</span>
-          <a href="https://cleanroutineco.gumroad.com/l/exdqd" target="_blank" rel="noopener noreferrer">See all 9<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+          <span class="foot-caption">You just tried 1 of 9 pages</span>
+          <a class="foot-btn" href="https://cleanroutineco.gumroad.com/l/exdqd" target="_blank" rel="noopener noreferrer">Get the full logbook &mdash; $25<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
       </div>
@@ -1305,8 +1325,8 @@ body::before {
           <input type="number" id="try-pages-rg" value="42" min="0" step="1">
         </div>
         <div class="try-page-foot">
-          <span>This is 1 of 10 pages inside</span>
-          <a href="https://cleanroutineco.gumroad.com/l/zfahvm" target="_blank" rel="noopener noreferrer">See all 10<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+          <span class="foot-caption">You just tried 1 of 10 pages</span>
+          <a class="foot-btn" href="https://cleanroutineco.gumroad.com/l/zfahvm" target="_blank" rel="noopener noreferrer">Get the full logbook &mdash; $9<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
       </div>
@@ -1327,8 +1347,8 @@ body::before {
           <input type="number" id="try-pages-rb" value="28" min="0" step="1">
         </div>
         <div class="try-page-foot">
-          <span>This is 1 of 10 pages inside</span>
-          <a href="https://cleanroutineco.gumroad.com/l/zkhxth" target="_blank" rel="noopener noreferrer">See all 10<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+          <span class="foot-caption">You just tried 1 of 10 pages</span>
+          <a class="foot-btn" href="https://cleanroutineco.gumroad.com/l/zkhxth" target="_blank" rel="noopener noreferrer">Get the full logbook &mdash; $9<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
       </div>
@@ -1345,8 +1365,8 @@ body::before {
           </div>
         </div>
         <div class="try-page-foot">
-          <span>This is 1 of 10 pages inside</span>
-          <a href="https://cleanroutineco.gumroad.com/l/icrtau" target="_blank" rel="noopener noreferrer">See all 10<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+          <span class="foot-caption">You just tried 1 of 10 pages</span>
+          <a class="foot-btn" href="https://cleanroutineco.gumroad.com/l/icrtau" target="_blank" rel="noopener noreferrer">Get the full logbook &mdash; $12<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
       </div>
@@ -1363,8 +1383,8 @@ body::before {
           </div>
         </div>
         <div class="try-page-foot">
-          <span>This is 1 of 10 pages inside</span>
-          <a href="https://cleanroutineco.gumroad.com/l/vbluvk" target="_blank" rel="noopener noreferrer">See all 10<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+          <span class="foot-caption">You just tried 1 of 10 pages</span>
+          <a class="foot-btn" href="https://cleanroutineco.gumroad.com/l/vbluvk" target="_blank" rel="noopener noreferrer">Get the full logbook &mdash; $12<svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         </div>
       </div>
       </div>
@@ -1570,7 +1590,7 @@ body::before {
       </details>
       <details class="faq-item">
         <summary>Something&#8217;s wrong with my download. Now what?<span class="plus"></span></summary>
-        <p class="answer">Reach out to us through Gumroad and we&#8217;ll sort it out.</p>
+        <p class="answer">Use the <a href="#contact">contact form</a> on this page and we&#8217;ll sort it out.</p>
       </details>
     </div>
   </section>
@@ -1581,7 +1601,7 @@ body::before {
   <p style="text-align:center; color:var(--ink-soft); font-size:.9rem; margin-top:-1.4rem; margin-bottom:2rem;">
     Questions about an order, a download issue, or anything else &mdash; send it here.
   </p>
-  <form action="https://formspree.io/f/mqevrejw" method="POST" style="max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:1rem;">
+  <form class="contact-form-wrap" action="https://formspree.io/f/mqevrejw" method="POST" id="contactForm" style="max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:1rem;">
     <div>
       <label for="contact-email" style="display:block; font-size:12px; color:var(--ink-soft); margin-bottom:6px; letter-spacing:.04em; text-transform:uppercase;">Email</label>
       <input type="email" id="contact-email" name="email" required
@@ -1593,11 +1613,16 @@ body::before {
         style="width:100%; padding:12px 14px; border-radius:8px; border:1px solid var(--line); background:var(--paper); font-family:var(--sans); font-size:14px; color:var(--ink); resize:vertical;"></textarea>
     </div>
     <input type="hidden" name="_subject" value="New message from Clean Routine Co. site" />
+    <input type="hidden" name="source" value="support-contact" />
     <button type="submit" class="btn" style="align-self:center; margin-top:.5rem;">
       Send message
       <svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg>
     </button>
   </form>
+  <div class="contact-success">
+    <svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>
+    <span>Message sent &mdash; we&#8217;ll get back to you soon.</span>
+  </div>
 </section>
   <!-- FINAL CTA -->
   <section class="final-cta reveal">
@@ -1732,6 +1757,33 @@ function crcSwitchGalleryTab(btn, panelId) {
         }
       }).catch(function () {
         submitBtn.textContent = originalLabel;
+        submitBtn.disabled = false;
+      });
+    });
+  }
+
+  /* contact form */
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var submitBtn = contactForm.querySelector('button[type="submit"]');
+      var originalHTML = submitBtn.innerHTML;
+      submitBtn.textContent = 'Sending\u2026';
+      submitBtn.disabled = true;
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          document.getElementById('contact').classList.add('is-sent');
+        } else {
+          submitBtn.innerHTML = originalHTML;
+          submitBtn.disabled = false;
+        }
+      }).catch(function () {
+        submitBtn.innerHTML = originalHTML;
         submitBtn.disabled = false;
       });
     });
