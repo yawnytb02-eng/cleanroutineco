@@ -453,7 +453,11 @@ body::before {
 .bundle-nudge.on-ink strong { color: var(--brass); }
 .p-card .price { font-family: var(--serif); font-weight: 300; font-size: 1.7rem; color: var(--ink); }
 .p-card .price-note { font-size: 11.5px; color: var(--ink-soft); }
-.p-card .btn { background: var(--acc); color: #fff; }
+.p-card.on-ink .for { color: var(--brass); }
+.p-card.on-ink h3 { color: var(--paper); }
+.p-card.on-ink .desc { color: var(--paper-soft); }
+.p-card.on-ink .price { color: var(--paper); }
+.p-card.on-ink .price-note { color: var(--paper-soft); }
 
 @media (max-width: 900px) {
   .split { grid-template-columns: 1fr; }
@@ -867,6 +871,21 @@ body::before {
 @media (max-width: 560px) { .inside-block { padding: 2.5rem 1.35rem; } }
 
 /* ============================================
+   GET THE APP
+   ============================================ */
+.app-block { background: var(--paper); border-radius: var(--r-md); padding: 3.25rem 2.5rem; text-align: center; }
+.app-head { margin-bottom: 1.8rem; }
+.app-head h2 { font-size: clamp(1.6rem, 2.4vw, 2rem); margin-bottom: .6rem; }
+.app-head p { font-size: .95rem; color: var(--ink-soft); max-width: 46ch; margin: 0 auto; }
+
+.app-features { margin-bottom: 2.2rem; }
+.app-features .chip .ic { color: var(--brass-deep); }
+
+.app-cta { display: inline-flex; }
+
+@media (max-width: 560px) { .app-block { padding: 2.5rem 1.35rem; } }
+
+/* ============================================
    TESTIMONIALS
    ============================================ */
 .stories-block { background: var(--card); border-radius: var(--r-md); padding: 3.25rem 2.5rem; }
@@ -1031,6 +1050,7 @@ body::before {
   <symbol id="ic-pencil" viewBox="0 0 24 24"><path d="M15.5 4.5 19.5 8.5 8 20 4 20.5 4.5 16.5Z"/><path d="M13.5 6.5 17.5 10.5"/></symbol>
   <symbol id="ic-print" viewBox="0 0 24 24"><path d="M7 8V4h10v4"/><rect x="4.5" y="8" width="15" height="8" rx="1.4"/><path d="M7 15v5h10v-5"/></symbol>
   <symbol id="ic-lock" viewBox="0 0 24 24"><rect x="5.5" y="11" width="13" height="9" rx="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="ic-camera" viewBox="0 0 24 24"><path d="M4.5 8.5h3l1.3-2h6.4l1.3 2h3v10h-15z"/><circle cx="12" cy="13.3" r="3.4"/></symbol>
 </svg>
 
 <nav class="nav">
@@ -1038,7 +1058,8 @@ body::before {
     <a href="https://cleanroutineco.gumroad.com/" target="_blank" rel="noopener noreferrer" class="nav-brand">CleanRoutineCo</a>
     <div class="nav-links">
       <a href="https://www.pinterest.com/cleanroutineco/" target="_blank" rel="noopener noreferrer" class="text-link">Pinterest</a>
-      <a href="https://cleanroutineco.gumroad.com/" target="_blank" rel="noopener noreferrer" class="btn">Shop</a>
+      <a href="https://cleanroutineco.gumroad.com/" target="_blank" rel="noopener noreferrer" class="text-link">Shop the PDFs</a>
+      <a href="app.html" class="btn">Get the App</a>
     </div>
   </div>
 </nav>
@@ -1049,21 +1070,21 @@ body::before {
   <!-- HERO -->
   <header class="hero" id="top">
     <div>
-      <p class="eyebrow hero-kicker">Digital logbooks, seven aesthetics</p>
-      <h1>Every era starts on page <i>one.</i></h1>
-      <p class="hero-sub">Clean girl, clean boy, hustler, reader, sober life. Choose the routine you&#8217;re building and log it daily, on paper or on glass.</p>
+      <p class="eyebrow hero-kicker">The logbook system, now an app</p>
+      <h1>Every era starts with one <i>tap.</i></h1>
+      <p class="hero-sub">Clean girl, clean boy, hustler, reader, sober life. Fully customizable daily boxes, photo attachments, monthly and yearly tracking &mdash; the same system from the logbooks, live on your phone.</p>
       <div class="hero-cta-row">
-        <a href="https://cleanroutineco.gumroad.com/" target="_blank" rel="noopener noreferrer" class="btn">
-          Shop the collection
+        <a href="app.html" class="btn">
+          Get the app
           <svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg>
         </a>
         <a href="#index" class="btn-ghost">See all seven</a>
       </div>
       <div class="hero-trust">
-        <span>Digital PDF</span>
-        <span>Print or annotate</span>
-        <span>Instant download</span>
-        <span>Free Welcome Guide</span>
+        <span>Own it or subscribe</span>
+        <span>Free with the matching PDF</span>
+        <span>Photo attachments</span>
+        <span>Monthly &amp; yearly tracking</span>
       </div>
     </div>
 
@@ -1442,7 +1463,7 @@ body::before {
       <a href="https://cleanroutineco.gumroad.com/l/icrtau" target="_blank" rel="noopener noreferrer" class="btn btn-block">Get the Sober Girl logbook</a>
       <p class="bundle-nudge">Pairs with the Sober Boy logbook &mdash; add both, use code <strong>BUNDLE</strong> at checkout</p>
     </div>
-    <div class="p-card" id="sober-boy" style="--acc:var(--sb); --tint:var(--sb-tint)">
+    <div class="p-card on-ink" id="sober-boy" style="--acc:var(--sb); --tint:var(--sb-tint)">
       <p class="for">For him</p>
       <h3>Sober Boy<br>Logbook</h3>
       <p class="desc">Clear-headed is a discipline too. Track the streak, respect the work, keep it honest.</p>
@@ -1484,7 +1505,7 @@ body::before {
       </details>
                   <div class="price-row"><span class="price">$12</span><span class="price-note">Single PDF, instant download</span></div>
       <a href="https://cleanroutineco.gumroad.com/l/vbluvk" target="_blank" rel="noopener noreferrer" class="btn btn-block">Get the Sober Boy logbook</a>
-      <p class="bundle-nudge">Pairs with the Sober Girl logbook &mdash; add both, use code <strong>BUNDLE</strong> at checkout</p>
+      <p class="bundle-nudge on-ink">Pairs with the Sober Girl logbook &mdash; add both, use code <strong>BUNDLE</strong> at checkout</p>
     </div>
   </div>
 
@@ -1699,6 +1720,25 @@ body::before {
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- GET THE APP -->
+  <section class="app-block reveal" id="app">
+    <div class="app-head">
+      <span class="eyebrow">New &mdash; companion app</span>
+      <h2>Get the app</h2>
+      <p>The same system, live on your phone.</p>
+    </div>
+    <div class="chip-grid app-features">
+      <div class="chip"><svg class="ic" aria-hidden="true"><use href="#ic-pencil"/></svg><span>Fully customizable daily boxes</span></div>
+      <div class="chip"><svg class="ic" aria-hidden="true"><use href="#ic-camera"/></svg><span>Photo attachments</span></div>
+      <div class="chip"><svg class="ic" aria-hidden="true"><use href="#ic-trend"/></svg><span>Monthly &amp; yearly tracking</span></div>
+      <div class="chip"><svg class="ic" aria-hidden="true"><use href="#ic-tablet"/></svg><span>Home-screen widget preview</span></div>
+    </div>
+    <a href="app.html" class="btn app-cta">
+      Get the app
+      <svg class="ic" aria-hidden="true"><use href="#ic-arrow-right"/></svg>
+    </a>
   </section>
 
   <!-- TESTIMONIALS -->
